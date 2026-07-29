@@ -9,7 +9,7 @@ import {
 
 function Home() {
   const navigate = useNavigate();
-
+  const isMobile = window.innerWidth <= 768;
   const [books, setBooks] = useState([]);
   const [currentBook, setCurrentBook] = useState(0);
   const [search, setSearch] = useState("");
@@ -121,14 +121,16 @@ function Home() {
         style={{
           width: "100%",
           backgroundColor: darkMode ? "#1e293b" : "#1e3a8a",
-          padding: "18px 40px",
+          padding: isMobile ? "16px" : "18px 40px",
           display: "flex",
+          flexDirection: isMobile ? "column" : "row",
           justifyContent: "space-between",
-          alignItems: "center",
+          alignItems: isMobile ? "stretch" : "center",
+          gap: isMobile ? "15px" : "0px",
           boxSizing: "border-box",
           borderBottom: darkMode ? "1px solid #334155" : "none",
           transition: "background-color 0.3s ease"
-        }}
+}}
       >
         {/* BRAND & TOGGLE WRAPPER */}
         <div style={{ display: "flex", alignItems: "center", gap: "20px" }}>
@@ -164,7 +166,7 @@ function Home() {
           value={search}
           onChange={(e) => setSearch(e.target.value)}
           style={{
-            width: "320px",
+            width: isMobile ? "100%" : "320px",
             padding: "12px 16px",
             borderRadius: "10px",
             border: "none",
@@ -177,7 +179,14 @@ function Home() {
           }}
         />
 
-        <div style={{ display: "flex", gap: "25px", alignItems: "center" }}>
+        <div style={{
+          display: "flex",
+          flexDirection: isMobile ? "column" : "row",
+          gap: "15px",
+          alignItems: isMobile ? "stretch" : "center",
+          width: isMobile ? "100%" : "auto"
+        }}>
+
           <div style={{ position: "relative" }}>
             <button
               onClick={() => setShowDropdown(!showDropdown)}
@@ -241,9 +250,15 @@ function Home() {
       </div>
 
       {/* MAIN CONTENT */}
-      <div style={{ display: "flex", padding: "40px", gap: "30px", alignItems: "flex-start" }}>
+      <div style={{
+        display: "flex",
+        flexDirection: isMobile ? "column" : "row",
+        padding: isMobile ? "15px" : "40px",
+        gap: isMobile ? "20px" : "30px",
+        alignItems: "flex-start"
+      }}>
 
-        {/* LEFT SECTION */}
+        {/* LEFT SECTION */}dir
         <div style={{ flex: 1 }}>
           <h2 style={{ color: darkMode ? "#60a5fa" : "#1e40af", marginBottom: "25px" }}>Available Books</h2>
 
