@@ -28,7 +28,7 @@ function Home() {
     localStorage.setItem("pageverse-theme", darkMode ? "dark" : "light");
   }, [darkMode]);
 
-  // 1. 🔥 SPLIT & CLEAN GENRES FOR DROPDOWN
+  // 1. SPLIT & CLEAN GENRES FOR DROPDOWN
   const genres = useMemo(() => {
     const allIndividualGenres = [];
 
@@ -70,7 +70,7 @@ function Home() {
     const matchesSearch =
       book.title.toLowerCase().includes(search.toLowerCase()) ||
       (book.genre && book.genre.toLowerCase().includes(search.toLowerCase()));
-    
+
     const bookGenresArray = book.genre ? book.genre.split("/").map((g) => g.trim()) : [];
     const matchesGenre =
       selectedGenre === "All" || bookGenresArray.includes(selectedGenre);
@@ -108,9 +108,9 @@ function Home() {
   };
 
   return (
-    <div 
-      style={{ 
-        minHeight: "100vh", 
+    <div
+      style={{
+        minHeight: "100vh",
         backgroundColor: darkMode ? "#0f172a" : "#bfdbfe",
         transition: "background-color 0.3s ease"
       }}
@@ -130,14 +130,14 @@ function Home() {
           boxSizing: "border-box",
           borderBottom: darkMode ? "1px solid #334155" : "none",
           transition: "background-color 0.3s ease"
-}}
+        }}
       >
         {/* BRAND & TOGGLE WRAPPER */}
         <div style={{ display: "flex", alignItems: "center", gap: "20px" }}>
           <h1 style={{ color: "white", margin: 0, fontSize: "30px" }}>
             PageVerse 📚
           </h1>
-          
+
           <button
             onClick={() => setDarkMode(!darkMode)}
             style={{
@@ -224,11 +224,11 @@ function Home() {
                       padding: "12px 16px",
                       cursor: "pointer",
                       color: darkMode ? "#e2e8f0" : "#1e293b",
-                      backgroundColor: selectedGenre === genre 
-                        ? (darkMode ? "#334155" : "#eff6ff") 
+                      backgroundColor: selectedGenre === genre
+                        ? (darkMode ? "#334155" : "#eff6ff")
                         : "transparent",
-                      borderBottom: index !== genres.length - 1 
-                        ? (darkMode ? "1px solid #334155" : "1px solid #e2e8f0") 
+                      borderBottom: index !== genres.length - 1
+                        ? (darkMode ? "1px solid #334155" : "1px solid #e2e8f0")
                         : "none",
                     }}
                   >
